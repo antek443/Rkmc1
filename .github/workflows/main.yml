@@ -36,7 +36,8 @@ jobs:
         with:
           name: GrimClient-1.21.1
           path: |
-            **/build/libs/grimclient-*.jar
+            **/build/libs/*.jar
             !**/build/libs/*-sources.jar
+            !**/build/libs/*-dev.jar
           if-no-files-found: error
           retention-days: 30
