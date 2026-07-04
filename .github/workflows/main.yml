@@ -42,3 +42,4 @@ jobs:
             !**/build/libs/*-dev.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
