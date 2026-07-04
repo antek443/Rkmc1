@@ -31,13 +31,14 @@ jobs:
             cd $DIR && gradle build
           fi
 
-      - name: Upload JAR
-        uses: actions/upload-artifact@v4
+      - name: Create Release and Upload JAR
+        uses: softprops/action-gh-release@v2
         with:
-          name: GrimClient-1.21.1
-          path: |
+          tag_name: v1.0.0
+          name: Grim Client Release v1.0.0
+          files: |
             **/build/libs/*.jar
             !**/build/libs/*-sources.jar
             !**/build/libs/*-dev.jar
-          if-no-files-found: error
-          retention-days: 30
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
