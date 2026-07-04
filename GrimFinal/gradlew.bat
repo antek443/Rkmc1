@@ -1,0 +1,11 @@
+@echo off
+set DIRNAME=%~dp0
+if "%DIRNAME%"=="" set DIRNAME=.
+set APP_HOME=%DIRNAME%
+set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+set JAVA_EXE=java.exe
+%JAVA_EXE% -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
+if %ERRORLEVEL% neq 0 (
+    echo [!] Build nieudany! Pobierz JDK 21 z adoptium.net
+    pause
+)
