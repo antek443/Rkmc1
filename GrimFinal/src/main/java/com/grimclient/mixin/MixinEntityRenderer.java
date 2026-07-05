@@ -8,10 +8,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(EntityRenderer.class)
 public class MixinEntityRenderer {
-    @Inject(method="hasLabel(Lnet/minecraft/entity/Entity;Z)Z",at=@At("HEAD"),cancellable=true)
-    private void onHasLabel(Entity e,boolean b,CallbackInfoReturnable<Boolean> cir){
-        if(GrimClientMod.core==null)return;
-        var esp=GrimClientMod.core.moduleManager.getByName("ESP");
-        if(esp!=null&&esp.isEnabled())cir.setReturnValue(true);
+    @Inject(method = "hasLabel*", at = @At("HEAD"), cancellable = true)
+    private void onHasLabel(Entity e, CallbackInfoReturnable<Boolean> cir) {
+        if (GrimClientMod.core == null) return;
+        var esp = GrimClientMod.core.moduleManager.getByName("ESP");
+        if (esp != null && esp.isEnabled()) cir.setReturnValue(true);
     }
 }
